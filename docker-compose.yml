@@ -1,0 +1,18 @@
+version: "3"
+
+networks:
+  mongo_investic-network:
+    external: true
+
+services:
+  investic-fastapi-service:
+    build:
+      context: "."
+      dockerfile: "docker/dev/Dockerfile"
+    container_name: "investic-fastapi-container"
+    networks:
+      - "mongo_investic-network"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ".:/fastapi"
