@@ -11,6 +11,11 @@ RUN = ${COMPOSE} run
 help:
 	@cat $(MAKEFILE_LIST) | docker run --rm -i xanders/make-help
 
+.PHONY: start
+# Start fastapi server
+start:
+	uvicorn src.main:app --host 0.0.0.0 --port 8000
+
 .PHONY: up
 # Kill all containers, rebuild and up them
 up: kill
